@@ -4,63 +4,23 @@
 @use "@vicky-ui/tokens/tokens.scss" as tokens;
 @use "theme-colors.scss" as theme;
 
-$keppel-palette: (
-    0: tokens.$keppel-50,
-    10: tokens.$keppel-100,
-    20: tokens.$keppel-200,
-    30: tokens.$keppel-300,
-    40: tokens.$keppel-400,
-    50: tokens.$keppel-500,
-    60: tokens.$keppel-600,
-    70: tokens.$keppel-700,
-    80: tokens.$keppel-800,
-    90: tokens.$keppel-900,
-    95: tokens.$keppel-950,
-    100: tokens.$star-dust-0,
-    // usually white
-);
-
-$bittersweet-palette: (
-    0: tokens.$bitersweet-50,
-    10: tokens.$bitersweet-100,
-    20: tokens.$bitersweet-200,
-    30: tokens.$bitersweet-300,
-    40: tokens.$bitersweet-400,
-    50: tokens.$bitersweet-500,
-    60: tokens.$bitersweet-600,
-    70: tokens.$bitersweet-700,
-    80: tokens.$bitersweet-800,
-    90: tokens.$bitersweet-900,
-    95: tokens.$bitersweet-950,
-    100: tokens.$star-dust-0,
-    // usually white
-);
-
-$neutral-palette: (
-    0: tokens.$star-dust-0,
-    10: tokens.$star-dust-50,
-    20: tokens.$star-dust-100,
-    30: tokens.$star-dust-200,
-    40: tokens.$star-dust-300,
-    50: tokens.$star-dust-400,
-    60: tokens.$star-dust-500,
-    70: tokens.$star-dust-600,
-    80: tokens.$star-dust-700,
-    90: tokens.$star-dust-800,
-    95: tokens.$star-dust-900,
-    100: tokens.$star-dust-950,
+$my-theme: mat.define-theme(
+    (
+        color: (
+            theme-type: light,
+            primary: theme.$primary-palette,
+            tertiary: theme.$tertiary-palette,
+        ),
+        typography: (
+            plain-family: "'Roboto', sans-serif",
+        ),
+        density: (
+            scale: 0,
+        ),
+    )
 );
 
 html {
-    @include mat.theme(
-        (
-            color: (
-                theme-type: light,
-                primary: theme.$primary-palette,
-                tertiary: theme.$tertiary-palette,
-            ),
-            typography: Roboto,
-            density: 0,
-        )
-    );
+    @include mat.theme($my-theme);
+    @include mat.all-component-themes($my-theme);
 }
