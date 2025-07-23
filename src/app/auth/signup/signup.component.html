@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSignup()">
+    <input type="email" formControlName="email" placeholder="Email" />
+    @if (email.invalid && (email.dirty || email.touched)) {
+        @if (email.errors?.['required']) {
+            <div>Email is required.</div>
+        } @if (email.errors?.['email']) {
+            <div>Email must be a valid email address.</div>
+        }
+    }
+
+    <input type="password" formControlName="password" placeholder="Password" />
+    @if (password.invalid && (password.dirty || password.touched)) { @if
+    (password.errors?.['required']) {
+            <div>Password is required.</div>
+        } @if (password.errors?.['minlength']) {
+            <div>Password must be at least 6 characters.</div>
+        } }
+
+    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+    @if (form.errors?.['passwordMismatch'] && (confirmPassword.dirty ||
+    confirmPassword.touched)) {
+        <div>Passwords do not match.</div>
+    }
+
+    <button type="submit" [disabled]="form.invalid || isSubmitting">
+        Sign Up
+    </button>
+    @if (error) {
+        <div>{{ error }}</div>
+    } @if (success) {
+        <div>Signup successful! Please check your email to verify your account.</div>
+    }
+</form>

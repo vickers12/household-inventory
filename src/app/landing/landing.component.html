@@ -1,0 +1,11 @@
+<main>
+    <h1>Household Inventory</h1>
+    <p>
+        Track and share your household’s stuff. Start with your spices, but
+        manage anything!
+    </p>
+    @if (!(auth.user$ | async)) {
+        <button routerLink="/signup">Sign Up</button>
+        <button routerLink="/login">Log In</button>
+    }
+</main>
