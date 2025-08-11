@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <div class="sidenav__inner">
+            <mat-nav-list>
+                <a mat-list-item routerLink="">
+                    <mat-icon aria-label="Side home icon" fontSet="material-icons-outlined"
+                        matListItemIcon>home</mat-icon>
+                    Home
+                </a>
+                <a mat-list-item routerLink="inventory">
+                    <mat-icon aria-label="Side home icon" fontSet="material-icons-outlined"
+                        matListItemIcon>inventory</mat-icon>
+                    Inventory
+                </a>
+            </mat-nav-list>
+            @if (auth.isLoggedIn()) {
+                <mat-nav-list class="sidenav__action-btn-list">
+                    <a (click)="logout()" mat-list-item>
+                        <mat-icon aria-label="Side nav logout icon" matListItemIcon>logout</mat-icon>
+                        Logout
+                    </a>
+                </mat-nav-list>
+            } @else {
+                <mat-nav-list class="sidenav__action-btn-list">
+                    <a routerLink="/login" mat-list-item>Login</a>
+                    <a routerLink="/signup" mat-list-item>Sign Up</a>
+                </mat-nav-list>
+            }
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            @if (isHandset$ | async) {
+                <button type="button" aria-label="Toggle sidenav" matIconButton (click)="drawer.toggle()">
+                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+            }
+        </mat-toolbar>
+        <app-main-content>
+            <router-outlet></router-outlet>
+        </app-main-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

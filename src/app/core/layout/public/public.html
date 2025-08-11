@@ -1,0 +1,7 @@
+@if (auth.initialized()) {
+    <app-main-content>
+        <router-outlet></router-outlet>
+    </app-main-content>
+} @else {
+    <div>Loading...</div>
+}

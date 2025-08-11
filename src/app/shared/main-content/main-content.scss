@@ -1,0 +1,7 @@
+@use "@vicky-ui/tokens/tokens.scss" as tokens;
+
+:host {
+    display: block;
+    padding-inline: tokens.$vui-space-inline-md;
+    padding-block: tokens.$vui-space-stack-md;
+}

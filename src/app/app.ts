@@ -1,15 +1,13 @@
 import { Component, inject, signal } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { AuthService } from "./auth/auth.service";
-import { AsyncPipe } from "@angular/common";
+import { Auth } from "./core/auth/auth";
 
 @Component({
     selector: "app-root",
-    imports: [RouterOutlet, AsyncPipe],
+    imports: [RouterOutlet],
     templateUrl: "./app.html",
     styleUrl: "./app.scss",
 })
 export class App {
     protected readonly title = signal("household-inventory");
-    auth = inject(AuthService);
 }

@@ -1,0 +1,48 @@
+@use "@angular/material" as mat;
+@use "@vicky-ui/tokens/tokens.scss" as tokens;
+
+.sidenav-container {
+    height: 100%;
+
+    @include mat.list-overrides(
+        (
+            list-item-label-text-color: var(--mat-sys-on-primary),
+            list-item-hover-label-text-color: var(--mat-sys-on-primary),
+            list-item-focus-label-text-color: var(--mat-sys-on-primary),
+            list-item-leading-icon-color: currentColor,
+        )
+    );
+}
+
+/* === SideNav === */
+.sidenav {
+    max-width: 100%;
+    width: 15rem;
+}
+
+.sidenav__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* === SideNav: Action Button List === */
+.sidenav__action-btn-list {
+    @include mat.list-overrides(
+        (
+            list-item-label-text-color:
+                color-mix(in srgb, var(--mat-sys-on-primary) 80%, transparent),
+            list-item-hover-label-text-color: var(--mat-sys-on-primary),
+            list-item-focus-label-text-color: var(--mat-sys-on-primary),
+            list-item-leading-icon-color: currentColor,
+        )
+    );
+}
+
+/* === SideNav: Burger === */
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}

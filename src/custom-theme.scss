@@ -21,6 +21,25 @@ $my-theme: mat.define-theme(
 );
 
 html {
-    @include mat.theme($my-theme);
-    @include mat.all-component-themes($my-theme);
+    @include mat.theme(
+        (
+            color: (
+                theme-type: light,
+                primary: theme.$primary-palette,
+                tertiary: theme.$tertiary-palette,
+            ),
+            typography: (
+                plain-family: "'Roboto', sans-serif",
+            ),
+            density: (
+                scale: 0,
+            ),
+        )
+    );
+
+    @media (prefers-contrast: more) {
+        @include theme.high-contrast-overrides(light);
+    }
 }
+
+@include mat.all-component-themes($my-theme);
